@@ -5,17 +5,19 @@
 #include "SingularMatrixException.h"
 using namespace std;
 int main() {
-	Matrix m1(vector<vector<double>>{ {1,2},{3,4}});	
-	Matrix m2(vector<vector<double>>{{3,4}});
-	cout << m1;
-	//cout << m2;
-	cout << (m1^3);
-	cout << identity(4);
-	cout << m1(1, 1);
 	Matrix m3(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
 	Matrix m4(vector<vector<double>>{{1,10,31},{55,61,7},{91,8,11}});
-	m1(1, 1, 6);
-	cout << m1(1, 1);
+	cout << "ostream: (m3)" << endl << m3;
+	cout << "ostream: (m4)" << endl << m4;
+	cout << "Addition: " << endl << (m3 + m4);
+	cout << "Subtraction: " << endl << (m3 - m4);
+	cout << "Multiplication (int): " << endl << (m3 * 3);
+	cout << "Multiplication (double): " << endl << (m4* 4.5);
+	cout << "Power (1): " << endl <<  (m3^1);
+	cout << "Power (Pos): " << endl << (m4^3);
+	cout << "Indexing: " << endl << (m3(1,1));
+	m3(1,1,5);
+	cout << "Index after change: " << endl << (m3(1,1));
 	return 0;
 }
 
@@ -208,18 +210,22 @@ Matrix operator+(Matrix& mat1, Matrix& mat2)
 }
 
 Matrix operator-(Matrix& mat1, Matrix& mat2)
-{
+{	
+	Matrix retMat(mat1.rows, mat1.columns);
 	if (mat1.rows == mat2.rows && mat1.columns == mat2.columns) {
+		cout << "In if" << endl;
 		for (int i = 0; i < mat1.rows; i++) {
+			cout << "in outer " << endl;
 			for (int j = 0; j < mat1.columns; j++) {
-				mat1.values[i][j] -= mat2.values[i][j];
+				cout << "in inner" << endl;
+				retMat(i,j, (mat1.values[i][j] - mat2.values[i][j]));
 			}
 		}
 	}
 	else {
 		throw DimensionMismatchException();
 	}
-	return mat1;
+	return retMat;
 }
 
 Matrix operator*(Matrix& mat1, Matrix& mat2)
