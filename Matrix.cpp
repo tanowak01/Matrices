@@ -12,6 +12,8 @@ int main() {
 	cout << (m1^3);
 	cout << identity(4);
 	cout << m1(1, 1);
+	Matrix m3(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
+	Matrix m4(vector<vector<double>>{{1,10,31},{55,61,7},{91,8,11}});
 	m1(1, 1, 6);
 	cout << m1(1, 1);
 	return 0;
