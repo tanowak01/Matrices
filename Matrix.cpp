@@ -10,15 +10,16 @@ int main() {
 	cout << "ostream: (m3)" << endl << m3;
 	cout << "ostream: (m4)" << endl << m4;
 	cout << "Addition: " << endl << (m3 + m4);
-	cout << "Subtraction: " << endl << (m3 - m4);
-	cout << "Multiplication (int): " << endl << (m3 * 3);
+	Matrix mat = m3 -m4;
+	cout << "Subtraction: " << endl << mat;
+	/*cout << "Multiplication (int): " << endl << (m3 * 3);
 	cout << "Multiplication (double): " << endl << (m4* 4.5);
 	cout << "Power (1): " << endl <<  (m3^1);
 	cout << "Power (Pos): " << endl << (m4^3);
 	cout << "Indexing: " << endl << (m3(1,1));
 	m3(1,1,5);
 	cout << "Index after change: " << endl << (m3(1,1));
-	return 0;
+	*/return 0;
 }
 
 Matrix::Matrix(int row, int col)
@@ -213,14 +214,17 @@ Matrix operator-(Matrix& mat1, Matrix& mat2)
 {	
 	Matrix retMat(mat1.rows, mat1.columns);
 	if (mat1.rows == mat2.rows && mat1.columns == mat2.columns) {
-		cout << "In if" << endl;
+		//cout << "In if" << endl;
 		for (int i = 0; i < mat1.rows; i++) {
-			cout << "in outer " << endl;
+			//cout << "in outer " << endl;
 			for (int j = 0; j < mat1.columns; j++) {
-				cout << "in inner" << endl;
-				retMat(i,j, (mat1.values[i][j] - mat2.values[i][j]));
+				//cout << mat2(i,j) << endl;
+				double intermediate = mat1.values[i][j] - mat2.values[i][j];
+				cout << intermediate << endl;
+				retMat(i,j, intermediate);
 			}
 		}
+		return retMat;
 	}
 	else {
 		throw DimensionMismatchException();
