@@ -5,6 +5,9 @@
 #include <ostream>
 #include <vector>
 using namespace std;
+//need to implement the rref
+//need to implement the determinant
+//need to add destructor
 class Matrix {
 public:
 	Matrix(int row, int col);
@@ -20,13 +23,17 @@ public:
 	friend ostream& operator<<(ostream& out, const Matrix& mat);
 	double operator ()(int row, int col);
 	void operator ()(int row, int col, double val);
-	//Matrix rref();
+	Matrix rref();
 	double determinant();
-
+	int getRows();
+	int getColumns();
+	void swapRows(int row1, int row2);
 private:
 	int rows;
 	int columns;
 	vector<vector<double>> values;
 };
+Matrix operator *(int val, Matrix& mat);
+Matrix operator *(double val, Matrix& mat);
 Matrix identity(int n);
 #endif

@@ -5,21 +5,14 @@
 #include "SingularMatrixException.h"
 using namespace std;
 int main() {
-	Matrix m3(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
-	Matrix m4(vector<vector<double>>{{1,10,31},{55,61,7},{91,8,11}});
-	cout << "ostream: (m3)" << endl << m3;
-	cout << "ostream: (m4)" << endl << m4;
-	cout << "Addition: " << endl << (m3 + m4);
-	Matrix mat = m3 -m4;
-	cout << "Subtraction: " << endl << mat;
-	/*cout << "Multiplication (int): " << endl << (m3 * 3);
-	cout << "Multiplication (double): " << endl << (m4* 4.5);
-	cout << "Power (1): " << endl <<  (m3^1);
-	cout << "Power (Pos): " << endl << (m4^3);
-	cout << "Indexing: " << endl << (m3(1,1));
-	m3(1,1,5);
-	cout << "Index after change: " << endl << (m3(1,1));
-	*/return 0;
+	Matrix m1(vector<vector<double>>{ {1,2},{3,4}});	
+	Matrix m4(vector<vector<double>>{ {10, 11}, { 12,18 }});
+	Matrix m2(vector<vector<double>>{{3,4}});
+	Matrix m3(vector<vector<double>>{ {4} ,{9}});
+	cout << m1;
+	cout << m4;
+	cout << m1 - m4;
+	return 0;
 }
 
 Matrix::Matrix(int row, int col)
@@ -88,8 +81,79 @@ Matrix::Matrix(const Matrix& mat1, const Matrix& mat2)
 	}
 	else {
 		rows = mat1.rows;
-
+		columns = mat1.columns + mat2.columns;
+		values = vector<vector<double>>(rows);
+		for (unsigned int i = 0; i < mat1.values.size(); i++) {
+			values[i] = vector<double>(columns);
+		}
+		for (int i = 0; i < rows; i++) {
+			for (unsigned int j = 0; j < mat1.values[0].size() + mat2.values[0].size(); j++) {
+				if (j < mat1.values[0].size()) {
+					values[i][j] = mat1.values[i][j];
+				}
+				else {
+					values[i][j] = mat2.values[i][j-mat1.values[0].size()];
+				}
+			}
+		}
 	}
+}
+
+Matrix operator+(Matrix& mat1, Matrix& mat2)
+{	
+	if (mat1.rows == mat2.rows && mat1.columns == mat2.columns) {
+		for (int i = 0; i < mat1.rows; i++) {
+			for (int j = 0; j < mat1.columns; j++) {
+				mat1.values[i][j] += mat2.values[i][j];
+			}
+		}
+	}
+	else {
+		throw DimensionMismatchException();
+	}
+	return mat1;
+}
+
+Matrix operator-(Matrix& mat1, Matrix& mat2)
+{
+	if (mat1.rows == mat2.rows && mat1.columns == mat2.columns) {
+		for (int i = 0; i < mat1.rows; i++) {
+			for (int j = 0; j < mat1.columns; j++) {
+				mat1.values[i][j] -= mat2.values[i][j];
+			}
+		}
+	}
+	else {
+		throw DimensionMismatchException();
+	}
+	return mat1;
+}
+
+Matrix operator*(Matrix& mat1, Matrix& mat2)
+{	
+	Matrix retMat(mat1.rows, mat2.columns);
+	if (mat1.columns == mat2.rows) {
+		for (unsigned int i = 0; i < mat1.values.size(); i++)
+			for (unsigned int j = 0; j < mat2.values[0].size(); j++)
+				for (unsigned int k = 0; k < mat1.values[0].size(); k++) {
+					retMat.values[i][j] += mat1.values[i][k] * mat2.values[k][j];
+				}
+	}
+	else {
+		throw DimensionMismatchException();
+	}
+	return retMat;
+}
+
+Matrix operator*(Matrix& mat, int val)
+{
+	Matrix retMat(mat);
+	for (unsigned int i = 0; i < retMat.values.size(); i++) {
+		for (unsigned int j = 0; j < retMat.values[0].size(); j++) {
+			retMat.values[i][j] = mat.values[i][j] * val;
+		}
+	}
+	return retMat;
 }
 
 Matrix operator*(Matrix& mat, double val)
@@ -135,17 +199,6 @@ Matrix operator^(Matrix& mat, int power)
 	}
 }
 
-Matrix operator*(Matrix& mat, int val)
-{
-	Matrix retMat(mat);
-	for (unsigned int i = 0; i < retMat.values.size(); i++) {
-		for (unsigned int j = 0; j < retMat.values[0].size(); j++) {
-			retMat.values[i][j] = mat.values[i][j] * val;
-		}
-	}
-	return retMat;
-}
-
 ostream& operator<<(ostream& out, const Matrix& mat)
 {
 	for (unsigned int i = 0; i < mat.values.size(); i++) {
@@ -179,6 +232,10 @@ void Matrix::operator()(int row, int col, double val)
 	}
 }
 
+Matrix Matrix::rref() {
+	return ;
+}
+
 double Matrix::determinant()
 {/*
 	if (rows != columns)
@@ -195,57 +252,22 @@ double Matrix::determinant()
 	return 0;
 }
 
-Matrix operator+(Matrix& mat1, Matrix& mat2)
-{	
-	if (mat1.rows == mat2.rows && mat1.columns == mat2.columns) {
-		for (int i = 0; i < mat1.rows; i++) {
-			for (int j = 0; j < mat1.columns; j++) {
-				mat1.values[i][j] += mat2.values[i][j];
-			}
-		}
-	}
-	else {
-		throw DimensionMismatchException();
-	}
-	return mat1;
+int Matrix::getColumns() {
+	return columns;
 }
 
-Matrix operator-(Matrix& mat1, Matrix& mat2)
-{	
-	Matrix retMat(mat1.rows, mat1.columns);
-	if (mat1.rows == mat2.rows && mat1.columns == mat2.columns) {
-		//cout << "In if" << endl;
-		for (int i = 0; i < mat1.rows; i++) {
-			//cout << "in outer " << endl;
-			for (int j = 0; j < mat1.columns; j++) {
-				//cout << mat2(i,j) << endl;
-				double intermediate = mat1.values[i][j] - mat2.values[i][j];
-				cout << intermediate << endl;
-				retMat(i,j, intermediate);
-			}
-		}
-		return retMat;
-	}
-	else {
-		throw DimensionMismatchException();
-	}
-	return retMat;
+int Matrix::getRows() {
+	return rows;
 }
 
-Matrix operator*(Matrix& mat1, Matrix& mat2)
-{	
-	Matrix retMat(mat1.rows, mat2.columns);
-	if (mat1.columns == mat2.rows) {
-		for (unsigned int i = 0; i < mat1.values.size(); i++)
-			for (unsigned int j = 0; j < mat2.values[0].size(); j++)
-				for (unsigned int k = 0; k < mat1.values[0].size(); k++) {
-					retMat.values[i][j] += mat1.values[i][k] * mat2.values[k][j];
-				}
-	}
-	else {
-		throw DimensionMismatchException();
-	}
-	return retMat;
+Matrix operator*(int val, Matrix& mat)
+{
+	return mat * val;
+}
+
+Matrix operator*(double val, Matrix& mat)
+{
+	return mat * val;
 }
 
 Matrix identity(int n)
