@@ -233,6 +233,7 @@ void Matrix::operator()(int row, int col, double val)
 }
 
 Matrix Matrix::rref() {
+
 	return ;
 }
 
@@ -258,6 +259,10 @@ int Matrix::getColumns() {
 
 int Matrix::getRows() {
 	return rows;
+}
+
+void Matrix::swapRows(int row1, int row2) {
+
 }
 
 Matrix operator*(int val, Matrix& mat)
