@@ -9,6 +9,8 @@ int main() {
 	Matrix m4(vector<vector<double>>{ {10, 11}, { 12,18 }});
 	Matrix m2(vector<vector<double>>{{3,4}});
 	Matrix m3(vector<vector<double>>{ {4} ,{9}});
+	m4.swapRows(0,1);
+	cout << m4;
 	cout << m1;
 	cout << m4;
 	cout << m1 - m4;
@@ -234,7 +236,6 @@ void Matrix::operator()(int row, int col, double val)
 
 Matrix Matrix::rref() {
 
-	return ;
 }
 
 double Matrix::determinant()
@@ -262,7 +263,10 @@ int Matrix::getRows() {
 }
 
 void Matrix::swapRows(int row1, int row2) {
-
+	vector<double> temp = vector<double>(columns);
+	temp = values[row1];
+	values[row1] = values[row2];
+	values[row2] = temp;
 }
 
 Matrix operator*(int val, Matrix& mat)
