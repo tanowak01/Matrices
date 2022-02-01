@@ -44,7 +44,8 @@ private:
 				temp[i][j] = values[i][j];
 			}
 		}
-		return Matrix(temp);
+		values = temp;
+		return *this;
 	}
 };
 Matrix operator *(int val, Matrix& mat);
