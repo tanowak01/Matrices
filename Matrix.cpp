@@ -247,8 +247,10 @@ Matrix Matrix::rref() {
 		}
 		if(i < columns && values[i][i] == 0){
 			for(int nextNonZero = i; nextNonZero < rows; nextNonZero++){
+				//nextNonZero cannot stay as i by definition
 				if(values[nextNonZero][i] != 0){
 					cout << "Swap" << endl << swapRows(i+1, i);
+					i--;
 					break;
 				}
 			}
