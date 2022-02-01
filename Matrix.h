@@ -34,7 +34,7 @@ private:
 	vector<vector<double>> values;
 	void rowOperations(int row1, int row2, double mul){
 		for(int i = 0; i < columns; i ++){
-			values[row2][i] = values[row1][i] * mul;
+			values[row2][i] = values[row2][i] + values[row1][i] * mul;
 		}
 	}
 };
