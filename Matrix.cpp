@@ -187,7 +187,8 @@ Matrix operator^(Matrix& mat, double power)
 				Matrix adj(mat, identity(mat.rows));
 				adj.rref();
 				double newPower = power * -1;
-				return adj.seperateMatrix()^newPower;
+				Matrix ret(adj.seperateMatrix());
+				return ret^newPower;
 			}
 		}
 	}
