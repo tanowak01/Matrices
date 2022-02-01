@@ -5,11 +5,8 @@
 #include "SingularMatrixException.h"
 using namespace std;
 int main() {
-	Matrix m1(vector<vector<double>>{ {1,2},{3,4}});	
-	Matrix m4(vector<vector<double>>{ {10, 11}, { 12,18 }});
-	Matrix m2(vector<vector<double>>{{3,4}});
-	Matrix m3(vector<vector<double>>{ {4} ,{9}});
-	cout << m2.rref();
+	Matrix m(vector<vector<double>>{ {10, 11}, { 12,18 }});
+	cout << m.rref();
 	return 0;
 }
 
