@@ -236,6 +236,7 @@ Matrix Matrix::rref() {
 			}
 		}
 	}
+	return *this;
 }
 
 double Matrix::determinant()
