@@ -32,6 +32,11 @@ private:
 	int rows;
 	int columns;
 	vector<vector<double>> values;
+	void rowOperations(int row1, int row2, double mul){
+		for(int i = 0; i < columns; i ++){
+			values[row2][i] = values[row1][i] * mul;
+		}
+	}
 };
 Matrix operator *(int val, Matrix& mat);
 Matrix operator *(double val, Matrix& mat);

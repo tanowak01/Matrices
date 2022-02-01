@@ -231,8 +231,14 @@ Matrix Matrix::rref() {
 	for(int i = 0; i < rows; i ++){
 		if(values[i][i] != 0){//we have a pivot
 			double div = 1.0 / values[i][i];
-			for(int j = 0; j < columns; j++){
+			for(int j = 0; j < columns; j++){//simplifying current row
 				values[i][j] = div * values[i][j];
+			}
+			//need to subtract from lower rows
+			//
+			for(int lower = i; lower < rows; lower++){
+				double val = values[i][i]/values[lower][i];
+				rowOperations(i, lower, val);
 			}
 		}
 	}
