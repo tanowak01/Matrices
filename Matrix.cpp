@@ -171,24 +171,24 @@ Matrix operator^(Matrix& mat, int power)
 			return identity(mat.columns);
 		}
 		//either negative or positive power
-		else {
-			Matrix retMat(mat);
-			if (power > 0) {
-				for (int i = 1; i < power; i++) {
-					retMat = retMat * mat;
-				}
-				return retMat;
+		Matrix retMat(mat);
+		if (power > 0) {
+			for (int i = 1; i < power; i++) {
+				retMat = retMat * mat;
 			}
+			return retMat;
+		}
 			//power is negative
+		else {
+			if (mat.determinant() == 0) {
+				throw SingularMatrixException();
+			}
 			else {
-				if (mat.determinant() == 0) {
-					throw SingularMatrixException();
-				}
-				else {
-					Matrix adj(mat, identity(mat.rows));
-					cout << adj.rref();
-					//adj.seperateMatrix();
-				}
+				Matrix adj(mat, identity(mat.rows));
+				cout << adj.rref();
+				adj.seperateMatrix();
+				cout << adj;
+				//adj.seperateMatrix();
 			}
 		}
 	}
