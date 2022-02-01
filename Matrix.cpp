@@ -236,10 +236,12 @@ Matrix Matrix::rref() {
 			}
 			//need to subtract from lower rows
 			//
-			for(int lower = i; lower < rows; lower++){
+			for(int lower = i+1; lower < rows; lower++){
+				cout << values[i][i] << endl;
+				cout << values[lower][i] << endl;
 				double val = values[i][i]/values[lower][i];
 				cout << val << endl;
-				rowOperations(i, lower, val);
+				//rowOperations(i, lower, val);
 			}
 		}
 	}
