@@ -217,7 +217,7 @@ double Matrix::operator()(int row, int col)
 	}
 }
 
-void Matrix::operator()(int row, int col, double val)
+Matrix Matrix::operator()(int row, int col, double val)
 {
 	//in bounds
 	if (0 <= row && row < rows && 0 <= col && col < columns) {
@@ -226,6 +226,7 @@ void Matrix::operator()(int row, int col, double val)
 	else {
 		throw IndexOutOfBoundsException();
 	}
+	return *this;
 }
 
 Matrix Matrix::rref() {
@@ -235,18 +236,10 @@ Matrix Matrix::rref() {
 			for(int j = 0; j < columns; j++){//simplifying current row
 				values[i][j] = div * values[i][j];
 			}
-			//need to subtract from lower rows
-			//
-			// for(int upper = 0; upper < i; upper){
-			// 	rowOperations(i, upper, values[upper][i]);
-			// }
 			for(int lower = i+1; lower < rows; lower++){
-				// cout << "ROW1: " << values[i][i] << endl;
-				// cout << "ROW2: " << values[lower][i] << endl;
 				rowOperations(i, lower, values[lower][i]);
 			}
 			for(int upper = 0; upper < i; upper++){
-				cout << values[upper][i] << endl;
 				rowOperations(i, upper, values[upper][i]);
 			}
 		}
@@ -278,11 +271,12 @@ int Matrix::getRows() {
 	return rows;
 }
 
-void Matrix::swapRows(int row1, int row2) {
+Matrix Matrix::swapRows(int row1, int row2) {
 	vector<double> temp = vector<double>(columns);
 	temp = values[row1];
 	values[row1] = values[row2];
 	values[row2] = temp;
+	return *this;
 }
 
 Matrix operator*(int val, Matrix& mat)
