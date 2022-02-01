@@ -9,11 +9,7 @@ int main() {
 	Matrix m4(vector<vector<double>>{ {10, 11}, { 12,18 }});
 	Matrix m2(vector<vector<double>>{{3,4}});
 	Matrix m3(vector<vector<double>>{ {4} ,{9}});
-	m4.swapRows(0,1);
-	cout << m4;
-	cout << m1;
-	cout << m4;
-	cout << m1 - m4;
+	cout << m2.rref();
 	return 0;
 }
 
@@ -235,7 +231,14 @@ void Matrix::operator()(int row, int col, double val)
 }
 
 Matrix Matrix::rref() {
-
+	for(int i = 0; i < rows; i ++){
+		if(values[i][i] != 0){//we have a pivot
+			double div = 1.0 / values[i][i];
+			for(int j = 0; j < columns; j++){
+				values[i][j] = div * values[i][j];
+			}
+		}
+	}
 }
 
 double Matrix::determinant()
