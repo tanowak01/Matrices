@@ -246,9 +246,9 @@ Matrix Matrix::rref() {
 				rowOperations(i, lower, values[lower][i]);
 			}
 			for(int upper = 0; upper < i; upper++){
-				cout << upper << endl;
+				cout << values[upper][i] << endl;
+				rowOperations(i, upper, values[upper][i]);
 			}
-			cout << *this;
 		}
 	}
 	return *this;
