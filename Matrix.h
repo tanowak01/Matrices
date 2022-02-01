@@ -5,9 +5,7 @@
 #include <ostream>
 #include <vector>
 using namespace std;
-//need to implement the rref
 //need to implement the determinant
-//need to add destructor
 class Matrix {
 public:
 	Matrix(int row, int col);
@@ -32,23 +30,8 @@ private:
 	int rows;
 	int columns;
 	vector<vector<double>> values;
-	void rowOperations(int row1, int row2, double mul){
-		for(int i = 0; i < columns; i ++){
-			values[row2][i] = values[row2][i] - values[row1][i] * mul;
-		}
-	}
-	Matrix seperateMatrix(){
-		vector<vector<double>> temp = vector<vector<double>>(rows);
-		for(unsigned int i = 0; i < temp.size(); i ++){
-			temp[i] = vector<double>(columns/2);
-		}
-		for(int i = 0; i < rows; i ++){
-			for(int j = columns/2; j < columns; j++){
-				temp[i][j-(columns/2)] = values[i][j];
-			}
-		}
-		return Matrix(temp);
-	}
+	void rowOperations(int row1, int row2, double mul);
+	Matrix seperateMatrix();
 };
 Matrix operator *(int val, Matrix& mat);
 Matrix operator *(double val, Matrix& mat);

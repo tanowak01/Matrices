@@ -186,9 +186,7 @@ Matrix operator^(Matrix& mat, int power)
 			else {
 				Matrix adj(mat, identity(mat.rows));
 				cout << adj.rref();
-				Matrix fun = adj.seperateMatrix();
-				cout << fun;
-				//adj.seperateMatrix();
+				return adj.seperateMatrix();
 			}
 		}
 	}
@@ -292,6 +290,25 @@ Matrix Matrix::swapRows(int row1, int row2) {
 	values[row2] = temp;
 	return *this;
 }
+
+void Matrix::rowOperations(int row1, int row2, double mul){
+		for(int i = 0; i < columns; i ++){
+			values[row2][i] = values[row2][i] - values[row1][i] * mul;
+		}
+	}
+
+Matrix Matrix::seperateMatrix(){
+		vector<vector<double>> temp = vector<vector<double>>(rows);
+		for(unsigned int i = 0; i < temp.size(); i ++){
+			temp[i] = vector<double>(columns/2);
+		}
+		for(int i = 0; i < rows; i ++){
+			for(int j = columns/2; j < columns; j++){
+				temp[i][j-(columns/2)] = values[i][j];
+			}
+		}
+		return Matrix(temp);
+	}
 
 Matrix operator*(int val, Matrix& mat)
 {
