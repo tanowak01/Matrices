@@ -238,6 +238,7 @@ Matrix Matrix::rref() {
 			//
 			for(int lower = i; lower < rows; lower++){
 				double val = values[i][i]/values[lower][i];
+				cout << val << endl;
 				rowOperations(i, lower, val);
 			}
 		}
