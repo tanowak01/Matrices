@@ -187,7 +187,7 @@ Matrix operator^(Matrix& mat, int power)
 				else {
 					Matrix adj(mat, identity(mat.rows));
 					cout << adj.rref();
-					cout << adj.seperateMatrix();
+					adj.seperateMatrix();
 				}
 			}
 		}
