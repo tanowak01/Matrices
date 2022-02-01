@@ -273,7 +273,7 @@ double Matrix::determinant()
 			for(int i = 0; i < )
 		}
 	}*/
-	return 0;
+	return 1;
 }
 
 int Matrix::getColumns() {
