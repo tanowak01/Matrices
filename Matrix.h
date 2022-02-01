@@ -37,7 +37,7 @@ private:
 			values[row2][i] = values[row2][i] - values[row1][i] * mul;
 		}
 	}
-	void seperateMatrix(){
+	Matrix seperateMatrix(){
 		vector<vector<double>> temp = vector<vector<double>>(rows);
 		for(unsigned int i = 0; i < temp.size(); i ++){
 			temp[i] = vector<double>(columns/2);
@@ -47,7 +47,7 @@ private:
 				temp[i][j-(columns/2)] = values[i][j];
 			}
 		}
-		values = temp;
+		return Matrix(temp);
 	}
 };
 Matrix operator *(int val, Matrix& mat);
