@@ -17,7 +17,7 @@ public:
 	friend Matrix operator *(Matrix& mat1, Matrix& mat2);
 	friend Matrix operator *(Matrix& mat, int val);
 	friend Matrix operator *(Matrix& mat, double val);
-	friend Matrix operator ^(Matrix& mat, int power);
+	friend Matrix operator ^(Matrix& mat, double power);
 	friend ostream& operator<<(ostream& out, const Matrix& mat);
 	double operator ()(int row, int col);
 	Matrix operator ()(int row, int col, double val);

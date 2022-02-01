@@ -1,8 +1,8 @@
 #include "Matrix.h"
-#include "DimensionMismatchException.h"
 #include "InconsistentDimensionsException.h"
 #include "IndexOutOfBoundsException.h"
 #include "SingularMatrixException.h"
+#include "NonSquareMatrixException.h"
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
@@ -105,7 +105,7 @@ Matrix operator+(Matrix& mat1, Matrix& mat2)
 		}
 	}
 	else {
-		throw DimensionMismatchException();
+		throw InconsistentDimensionsException();
 	}
 	return mat1;
 }
@@ -120,7 +120,7 @@ Matrix operator-(Matrix& mat1, Matrix& mat2)
 		}
 	}
 	else {
-		throw DimensionMismatchException();
+		throw InconsistentDimensionsException();
 	}
 	return mat1;
 }
@@ -136,7 +136,7 @@ Matrix operator*(Matrix& mat1, Matrix& mat2)
 				}
 	}
 	else {
-		throw DimensionMismatchException();
+		throw InconsistentDimensionsException();
 	}
 	return retMat;
 }
@@ -163,7 +163,7 @@ Matrix operator*(Matrix& mat, double val)
 	return retMat;
 }
 
-Matrix operator^(Matrix& mat, int power)
+Matrix operator^(Matrix& mat, double power)
 {
 	if (mat.columns == mat.rows) {
 		//power = 0
@@ -185,13 +185,14 @@ Matrix operator^(Matrix& mat, int power)
 			}
 			else {
 				Matrix adj(mat, identity(mat.rows));
-				cout << adj.rref();
-				return adj.seperateMatrix();
+				adj.rref();
+				double newPower = power * -1;
+				return adj.seperateMatrix()^newPower;
 			}
 		}
 	}
 	else {
-		throw DimensionMismatchException();
+		throw NonSquareMatrixException();
 	}
 }
 
@@ -260,18 +261,7 @@ Matrix Matrix::rref() {
 }
 
 double Matrix::determinant()
-{/*
-	if (rows != columns)
-		throw DimensionMismatchException();
-	else {
-		if (rows == 1)
-			return values[0][0];
-		else {
-			Matrix cofactors(rows,columns);
-			int multiplier = 1;
-			for(int i = 0; i < )
-		}
-	}*/
+{
 	return 1;
 }
 
