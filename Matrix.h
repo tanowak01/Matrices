@@ -38,10 +38,13 @@ private:
 		}
 	}
 	void seperateMatrix(){
-		vector<vector<double>> temp = vector<vector<double>>(columns/2);
+		vector<vector<double>> temp = vector<vector<double>>(rows);
+		for(unsigned int i = 0; i < temp.size(); i ++){
+			temp[i] = vector<double>(columns/2);
+		}
 		for(int i = 0; i < rows; i ++){
 			for(int j = columns/2; j < columns; j++){
-				temp[i][j] = values[i][j];
+				temp[i][j-(columns/2)] = values[i][j];
 			}
 		}
 		values = temp;

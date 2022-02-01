@@ -37,9 +37,9 @@ Matrix::Matrix(const Matrix& mat)
 	this->rows = mat.rows;
 	values = vector<vector<double>>(rows);
 	for (unsigned int i = 0; i < mat.values.size(); i++) {
-		for (unsigned int j = 0; j < mat.values[i].size(); j++) {
+		//for (unsigned int j = 0; j < mat.values[i].size(); j++) {
 			values[i] = vector<double>(columns);
-		}
+		//}
 	}
 	for (int i = 0; i < mat.rows; i++) {
 		for (int j = 0; j < mat.columns; j++) {
