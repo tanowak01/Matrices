@@ -238,10 +238,11 @@ Matrix Matrix::rref() {
 			//need to subtract from lower rows
 			//
 			for(int lower = i+1; lower < rows; lower++){
-				cout << "ROW1: " << values[i][i] << endl;
-				cout << "ROW2: " << values[lower][i] << endl;
+				// cout << "ROW1: " << values[i][i] << endl;
+				// cout << "ROW2: " << values[lower][i] << endl;
 				rowOperations(i, lower, values[lower][i]);
 			}
+			cout << *this;
 		}
 	}
 	return *this;
