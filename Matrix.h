@@ -22,12 +22,12 @@ public:
 	friend Matrix operator ^(Matrix& mat, int power);
 	friend ostream& operator<<(ostream& out, const Matrix& mat);
 	double operator ()(int row, int col);
-	void operator ()(int row, int col, double val);
+	Matrix operator ()(int row, int col, double val);
 	Matrix rref();
 	double determinant();
 	int getRows();
 	int getColumns();
-	void swapRows(int row1, int row2);
+	Matrix swapRows(int row1, int row2);
 private:
 	int rows;
 	int columns;
