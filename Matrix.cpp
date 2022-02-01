@@ -6,6 +6,7 @@
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{ {10, 11}, { 12,18 }});
+	cout << m;
 	cout << m.rref();
 	return 0;
 }
