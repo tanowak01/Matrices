@@ -5,7 +5,7 @@
 #include "SingularMatrixException.h"
 using namespace std;
 int main() {
-	Matrix m(vector<vector<double>>{ {10, 11}, { 12,18 }});
+	Matrix m(vector<vector<double>>{ {10, 11}, { 12,18 }, {14,5}});
 	cout << m;
 	cout << m.rref();
 	return 0;
@@ -230,7 +230,7 @@ void Matrix::operator()(int row, int col, double val)
 
 Matrix Matrix::rref() {
 	for(int i = 0; i < rows; i ++){
-		if(values[i][i] != 0){//we have a pivot
+		if(i < columns && values[i][i] != 0){//we have a pivot
 			double div = 1.0 / values[i][i];
 			for(int j = 0; j < columns; j++){//simplifying current row
 				values[i][j] = div * values[i][j];
