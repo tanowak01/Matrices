@@ -239,11 +239,21 @@ Matrix Matrix::rref() {
 			for(int j = 0; j < columns; j++){//simplifying current row
 				values[i][j] = div * values[i][j];
 			}
+			//row reduction of values below the current row
 			for(int lower = i+1; lower < rows; lower++){
 				rowOperations(i, lower, values[lower][i]);
 			}
+			//row reduction of the values above the current row
 			for(int upper = 0; upper < i; upper++){
 				rowOperations(i, upper, values[upper][i]);
+			}
+		}
+		if(i < columns && values[i][i] == 0){
+			for(int nextNonZero = i; nextNonZero < rows; nextNonZero++){
+				if(values[nextNonZero][i] != 0){
+					cout << "Swap" << endl << swapRows(i+1, i);
+					break;
+				}
 			}
 		}
 	}
