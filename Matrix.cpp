@@ -5,9 +5,9 @@
 #include "SingularMatrixException.h"
 using namespace std;
 int main() {
-	Matrix m(vector<vector<double>>{{0,0,0},{4,5,6},{7,0,9}});
+	Matrix m(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
 	cout << m;
-	cout << m.rref();
+	cout << (m ^ (-1));
 	return 0;
 }
 
@@ -185,7 +185,8 @@ Matrix operator^(Matrix& mat, int power)
 					throw SingularMatrixException();
 				}
 				else {
-
+					Matrix adj(mat, identity(mat.rows));
+					cout << adj.rref();
 				}
 			}
 		}
