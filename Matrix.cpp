@@ -313,6 +313,7 @@ double determinant(vector<vector<double>> mat,int n){
 		}
 		det = det + (pow(-1, x) * mat[0][x] * determinant(subMat, n - 1 ));
 	}
+	return det;
 }
 
 int Matrix::getColumns() {
