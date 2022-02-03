@@ -3,9 +3,11 @@
 #include "IndexOutOfBoundsException.h"
 #include "SingularMatrixException.h"
 #include "NonSquareMatrixException.h"
+#include <math.h>
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
+	m.determinant();
 	return 0;
 }
 
@@ -285,6 +287,32 @@ double Matrix::determinant()
 {
 
 	return 1;
+}
+
+double determinant(vector<vector<double>> mat,int n){
+	double det;
+	//Base case
+	if(n == 2){
+   		return ((mat[0][0] * mat[1][1]) - (mat[1][0] * mat[0][1]));
+	}
+	vector<vector<double>> subMat = vector<vector<double>>(mat.size());
+	for(int i = 0; i < mat.size(); i ++){
+		subMat[i] = vector<double>(mat[0].size());
+	}
+	for (int x = 0; x < n; x++) {
+		int subi = 0;
+		for (int i = 1; i < n; i++) {
+		int subj = 0;
+			for (int j = 0; j < n; j++) {
+				if (j == x)
+					continue;
+				subMat[subi][subj] = mat[i][j];
+				subj++;
+			}
+		subi++;
+		}
+		det = det + (pow(-1, x) * mat[0][x] * determinant(subMat, n - 1 ));
+	}
 }
 
 int Matrix::getColumns() {
