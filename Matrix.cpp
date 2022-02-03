@@ -288,7 +288,8 @@ double Matrix::determinant()
 	if(rows != columns){
 		throw NonSquareMatrixException();
 	}
-	return determinant(values, rows);;
+	//return determinant(values, rows);;
+	return 0;
 }
 
 double determinant(vector<vector<double>> mat,int n){
