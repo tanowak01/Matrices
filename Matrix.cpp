@@ -285,8 +285,10 @@ Matrix Matrix::rref() {
 
 double Matrix::determinant()
 {
-
-	return 1;
+	if(rows != columns){
+		throw NonSquareMatrixException();
+	}
+	return determinant(values, rows);;
 }
 
 double determinant(vector<vector<double>> mat,int n){
