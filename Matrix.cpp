@@ -9,6 +9,9 @@ int main() {
 	Matrix m(vector<vector<double>>{{1,2,3,7},{5,6,7,10},{9,8,1,11},{1,2,3,4}});
 	cout << m;
 	cout << m.determinant()<<endl;
+	cout << (m^5);
+	cout << (m^-1);
+	cout << (m^-5);
 	return 0;
 }
 
@@ -353,19 +356,6 @@ Matrix Matrix::seperateMatrix(){
 		}
 		return Matrix(temp);
 	}
-
-vector<vector<int>> Matrix::getSigns(){
-	vector<vector<int>> sign = vector<vector<int>>(rows);
-	for(int i = 0; i < rows; i ++){
-		sign[i] = vector<int>(columns);
-	}
-	for(int i = 0; i < rows; i ++){
-		for(int j = 0; j < columns; j++){
-			sign[i][j] = (j + i * columns) % 2 == 0 ? 1 : -1;
-		}
-	}
-	return sign;
-}
 
 Matrix operator*(int val, Matrix& mat)
 {

@@ -33,7 +33,6 @@ private:
 	vector<vector<double>> values;
 	void rowOperations(int row1, int row2, double mul);
 	Matrix seperateMatrix();
-	vector<vector<int>> getSigns();
 	double determinant(vector<vector<double>> mat,int n);
 };
 Matrix operator *(int val, Matrix& mat);
