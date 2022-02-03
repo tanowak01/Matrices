@@ -7,7 +7,8 @@
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
-	m.determinant();
+	cout << m;
+	cout << m.determinant();
 	return 0;
 }
 
