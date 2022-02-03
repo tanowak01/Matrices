@@ -27,13 +27,13 @@ public:
 	int getRows();
 	int getColumns();
 	Matrix swapRows(int row1, int row2);
-	double crossProduct();
 private:
 	int rows;
 	int columns;
 	vector<vector<double>> values;
 	void rowOperations(int row1, int row2, double mul);
 	Matrix seperateMatrix();
+	double crossProduct(vector<int> col);
 };
 Matrix operator *(int val, Matrix& mat);
 Matrix operator *(double val, Matrix& mat);

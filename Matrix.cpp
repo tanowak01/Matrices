@@ -6,7 +6,6 @@
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
-	cout << m.crossProduct();
 	return 0;
 }
 
@@ -288,23 +287,6 @@ double Matrix::determinant()
 	return 1;
 }
 
-double Matrix::crossProduct(){
-	vector<vector<double>> sign = vector<vector<double>>(rows);
-	for(int i = 0; i < rows; i ++){
-		sign[i] = vector<double>(columns);
-	}
-	for(int i = 0; i < rows; i ++){
-		for(int j = 0; j < columns; j++){
-			cout << j + i * columns << " ";
-			sign[i][j] = (j + i * columns) % 2 == 0 ? 1 : -1;
-		}
-		cout << endl;
-	}
-	Matrix signMat(sign);
-	cout << signMat;
-	return 0;
-}
-
 int Matrix::getColumns() {
 	return columns;
 }
@@ -339,6 +321,22 @@ Matrix Matrix::seperateMatrix(){
 		}
 		return Matrix(temp);
 	}
+
+double Matrix::crossProduct(vector<int> col){
+	vector<vector<double>> sign = vector<vector<double>>(rows);
+	for(int i = 0; i < rows; i ++){
+		sign[i] = vector<double>(columns);
+	}
+	for(int i = 0; i < rows; i ++){
+		for(int j = 0; j < columns; j++){
+			cout << j + i * columns << " ";
+			sign[i][j] = (j + i * columns) % 2 == 0 ? 1 : -1;
+		}
+		cout << endl;
+	}
+	
+	return 0;
+}
 
 Matrix operator*(int val, Matrix& mat)
 {
