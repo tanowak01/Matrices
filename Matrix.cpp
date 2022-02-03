@@ -8,6 +8,7 @@
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3,7},{5,6,7,10},{9,8,1,11},{1,2,3,4}});
+	cout << m;
 	cout << m.transpose();
 	return 0;
 }
