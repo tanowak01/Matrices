@@ -3,15 +3,12 @@
 #include "IndexOutOfBoundsException.h"
 #include "SingularMatrixException.h"
 #include "NonSquareMatrixException.h"
+#include "DomainException.h"
 #include <math.h>
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3,7},{5,6,7,10},{9,8,1,11},{1,2,3,4}});
-	cout << m;
-	cout << m.determinant()<<endl;
-	cout << (m^5);
-	cout << (m^-1);
-	cout << (m^-5);
+	cout << m.transpose();
 	return 0;
 }
 
@@ -197,6 +194,8 @@ Matrix operator^(Matrix& mat, double power)
 			return identity(mat.columns);
 		}
 		//either negative or positive power
+		if(power <1 &&  power > -1)
+			throw DomainException();
 		Matrix retMat(mat);
 		if (power > 0) {
 			for (int i = 1; i < power; i++) {
@@ -336,6 +335,19 @@ Matrix Matrix::swapRows(int row1, int row2) {
 	values[row1] = values[row2];
 	values[row2] = temp;
 	return *this;
+}
+
+Matrix Matrix::transpose(){
+	vector<vector<double>> trans = vector<vector<double>>(columns);
+	for(int i = 0; i < columns; i++){
+		trans[i] = vector<double>(rows);
+	}
+	for(int i = 0; i < rows; i++){
+		for(int j = 0; j < columns; j++){
+			trans[j][i] = values[i][j]; 
+		}
+	}
+	return Matrix(trans);
 }
 
 void Matrix::rowOperations(int row1, int row2, double mul){
