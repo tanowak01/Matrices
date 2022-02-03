@@ -288,11 +288,10 @@ double Matrix::determinant()
 	if(rows != columns){
 		throw NonSquareMatrixException();
 	}
-	//return determinant(values, rows);;
-	return 0;
+	return determinant(values, rows);
 }
 
-double determinant(vector<vector<double>> mat,int n){
+double Matrix::determinant(vector<vector<double>> mat,int n){
 	double det;
 	//Base case
 	if(n == 2){
