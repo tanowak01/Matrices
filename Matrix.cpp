@@ -295,8 +295,10 @@ double Matrix::crossProduct(){
 	}
 	for(int i = 0; i < rows; i ++){
 		for(int j = 0; j < columns; j++){
-			sign[i][j] = j + i * columns % 2 == 0 ? 1 : -1;
+			cout << j + i * columns << " ";
+			sign[i][j] = (j + i * columns) % 2 == 0 ? 1 : -1;
 		}
+		cout << endl;
 	}
 	Matrix signMat(sign);
 	cout << signMat;
