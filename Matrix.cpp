@@ -6,8 +6,7 @@
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3},{5,6,7},{9,8,1}});
-	cout << m;
-	cout << (m ^ (-2));
+	cout << m.crossProduct();
 	return 0;
 }
 
@@ -44,6 +43,28 @@ Matrix::Matrix(const Matrix& mat)
 	for (int i = 0; i < mat.rows; i++) {
 		for (int j = 0; j < mat.columns; j++) {
 			this->values[i][j] = mat.values[i][j];
+		}
+	}
+}
+
+Matrix::Matrix(vector<vector<int>> init)
+{
+	//cout << "VECTOR" << endl;
+	int	size = init[0].size();
+	for (unsigned int i = 0; i < init.size(); i++) {
+		if (init[i].size() != size) {
+			throw InconsistentDimensionsException();
+		}
+	}
+	this->rows = init.size();
+	this->columns = init[0].size();
+	values = vector<vector<double>>(rows);
+	for (unsigned int i = 0; i < init.size(); i++) {
+			values[i] = vector<double>(columns);
+	}
+	for (unsigned int i = 0; i < init.size(); i++) {
+		for (unsigned int j = 0; j < init[0].size(); j++) {
+			values[i][j] = init[i][j];
 		}
 	}
 }
@@ -263,7 +284,23 @@ Matrix Matrix::rref() {
 
 double Matrix::determinant()
 {
+
 	return 1;
+}
+
+double Matrix::crossProduct(){
+	vector<vector<double>> sign = vector<vector<double>>(rows);
+	for(int i = 0; i < rows; i ++){
+		sign[i] = vector<double>(columns);
+	}
+	for(int i = 0; i < rows; i ++){
+		for(int j = 0; j < columns; j++){
+			sign[i][j] = j + i * columns;
+		}
+	}
+	Matrix signMat(sign);
+	cout << signMat;
+	return 0;
 }
 
 int Matrix::getColumns() {

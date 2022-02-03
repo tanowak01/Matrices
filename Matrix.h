@@ -10,6 +10,7 @@ class Matrix {
 public:
 	Matrix(int row, int col);
 	Matrix(const Matrix& mat);
+	Matrix(vector<vector<int>> init);
 	Matrix(vector<vector<double>> init);
 	Matrix(const Matrix& mat1, const Matrix& mat2);
 	friend Matrix operator +(Matrix& mat1, Matrix& mat2);
@@ -26,6 +27,7 @@ public:
 	int getRows();
 	int getColumns();
 	Matrix swapRows(int row1, int row2);
+	double crossProduct();
 private:
 	int rows;
 	int columns;
