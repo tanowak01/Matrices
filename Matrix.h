@@ -34,7 +34,7 @@ private:
 	void rowOperations(int row1, int row2, double mul);
 	Matrix seperateMatrix();
 	vector<vector<int>> getSigns();
-	double determinant(Matrix mat,int n);
+	double determinant(vector<vector<double>> mat,int n);
 };
 Matrix operator *(int val, Matrix& mat);
 Matrix operator *(double val, Matrix& mat);
