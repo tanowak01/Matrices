@@ -33,7 +33,7 @@ private:
 	vector<vector<double>> values;
 	void rowOperations(int row1, int row2, double mul);
 	Matrix seperateMatrix();
-	double crossProduct(vector<int> col);
+	vector<vector<int>> getSigns();
 };
 Matrix operator *(int val, Matrix& mat);
 Matrix operator *(double val, Matrix& mat);

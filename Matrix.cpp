@@ -322,20 +322,17 @@ Matrix Matrix::seperateMatrix(){
 		return Matrix(temp);
 	}
 
-double Matrix::crossProduct(vector<int> col){
-	vector<vector<double>> sign = vector<vector<double>>(rows);
+vector<vector<int>> Matrix::getSigns(){
+	vector<vector<int>> sign = vector<vector<int>>(rows);
 	for(int i = 0; i < rows; i ++){
-		sign[i] = vector<double>(columns);
+		sign[i] = vector<int>(columns);
 	}
 	for(int i = 0; i < rows; i ++){
 		for(int j = 0; j < columns; j++){
-			cout << j + i * columns << " ";
 			sign[i][j] = (j + i * columns) % 2 == 0 ? 1 : -1;
 		}
-		cout << endl;
 	}
-	
-	return 0;
+	return sign;
 }
 
 Matrix operator*(int val, Matrix& mat)
