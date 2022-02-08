@@ -8,6 +8,7 @@
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
+	cin >> m;
 	cout << m;
 	cout << m.trace();
 	return 0;
@@ -232,6 +233,13 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 		cout << endl;
 	}
 	return out;
+}
+
+istream& operator>>(istream& in, const Matrix& mat){
+	double val;
+	in >> val;
+	cout << val;
+	return in;
 }
 
 double Matrix::operator()(int row, int col)
