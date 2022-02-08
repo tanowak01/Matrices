@@ -250,7 +250,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 	while(entire.find(lineDelim) != string::npos){
 		cout << entire.find(lineDelim) << endl;
 		cout << entire.substr(0,entire.find(lineDelim)) << endl;
-		entire = entire.substr(entire.find(lineDelim));
+		entire = entire.substr(entire.find(lineDelim)+1);
 		cin >> entryDelim;
 	}
 
