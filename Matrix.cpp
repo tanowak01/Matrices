@@ -11,8 +11,8 @@ using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
 	cin >> m;
-	cout << m;
-	cout << m.trace();
+	//cout << m;
+	//cout << m.trace();
 	return 0;
 }
 
@@ -248,8 +248,10 @@ istream& operator>>(istream& in, const Matrix& mat){
 	string entryDelim = ",";
 	string lineDelim = ";";
 	while(entire.find(lineDelim) != string::npos){
+		cout << entire.find(lineDelim) << endl;
 		cout << entire.substr(0,entire.find(lineDelim)) << endl;
 		entire = entire.substr(entire.find(lineDelim));
+		cin >> entryDelim;
 	}
 
 	return in;
