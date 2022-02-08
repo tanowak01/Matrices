@@ -250,7 +250,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 	string lineDelim = ";";
 	while(entire.find(lineDelim) != string::npos){
 		rows.push_back(entire.substr(0,entire.find(lineDelim)));
-		entire = entire.erase(0,entire.find(lineDelim));
+		entire = entire.substr(entire.find(lineDelim)+1);
 	}
 	if(entire != "")
 		rows.push_back(entire);
