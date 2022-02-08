@@ -7,9 +7,9 @@
 #include <math.h>
 using namespace std;
 int main() {
-	Matrix m(vector<vector<double>>{{1,2,3},{5,6,70},{9,8,11},{1,2,3}});
+	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
 	cout << m;
-	cout << m.transpose();
+	cout << m.trace();
 	return 0;
 }
 
