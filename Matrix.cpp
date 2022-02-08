@@ -238,10 +238,9 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 }
 
 istream& operator>>(istream& in, const Matrix& mat){
-	string val;
-	while(getline(in, val, ']')){
-		cout << val << endl;
-	}
+	string entire;
+	getline(in, entire, ']');
+	cout << entire;
 	return in;
 }
 
