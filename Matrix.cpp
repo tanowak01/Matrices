@@ -240,7 +240,16 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 istream& operator>>(istream& in, const Matrix& mat){
 	string entire;
 	getline(in, entire, ']');
-	cout << entire;
+	while(entire.at(0) != '['){
+		cout << "Matrices must start with a \'[\' and end with \']\'" << endl;
+		getline(in, entire, ']');	
+	}
+	entire = entire.substr(1);
+	string entryDelim = ",";
+	string lineDelim = ";";
+	
+
+	cout << entire << endl;
 	return in;
 }
 
