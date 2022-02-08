@@ -250,12 +250,21 @@ istream& operator>>(istream& in, const Matrix& mat){
 	string lineDelim = ";";
 	while(entire.find(lineDelim) != string::npos){
 		rows.push_back(entire.substr(0,entire.find(lineDelim)));
-		entire = entire.substr(entire.find(lineDelim)+1);
+		entire = entire.erase(0,entire.find(lineDelim));
 	}
 	if(entire != "")
 		rows.push_back(entire);
+	vector<vector<double>> values = vector<vector<double>>(rows.size());
 	for(int i = 0; i < rows.size(); i++){
-		cout << rows.at(i) << endl;
+		//cout << rows.at(i) << endl;
+		int mostRecent;
+		int counter = 0;
+		while(rows.at(i).substr(mostRecent+1).find(entryDelim) != string::npos){
+			cout << "Substring: " << rows.at(i).substr(mostRecent+1) << endl;
+			counter++;
+			mostRecent = rows.at(i).substr(mostRecent+1).find(entryDelim);
+		}
+		cout << counter << endl;
 	}
 	return in;
 }
