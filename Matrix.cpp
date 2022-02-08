@@ -252,7 +252,8 @@ istream& operator>>(istream& in, const Matrix& mat){
 		rows.push_back(entire.substr(0,entire.find(lineDelim)));
 		entire = entire.substr(entire.find(lineDelim)+1);
 	}
-	rows.push_back(entire);
+	if(entire != "")
+		rows.push_back(entire);
 	for(int i = 0; i < rows.size(); i++){
 		cout << rows.at(i) << endl;
 	}
