@@ -239,6 +239,7 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 
 istream& operator>>(istream& in, const Matrix& mat){
 	string entire;
+	vector<string> rows;
 	getline(in, entire, ']');
 	while(entire.at(0) != '['){
 		cout << "Matrices must start with a \'[\' and end with \']\'" << endl;
@@ -248,13 +249,13 @@ istream& operator>>(istream& in, const Matrix& mat){
 	string entryDelim = ",";
 	string lineDelim = ";";
 	while(entire.find(lineDelim) != string::npos){
-		cout << entire.find(lineDelim) << endl;
-		cout << entire.substr(0,entire.find(lineDelim)) << endl;
+		rows.push_back(entire.substr(0,entire.find(lineDelim)));
 		entire = entire.substr(entire.find(lineDelim)+1);
-		cin >> entryDelim;
 	}
-	cout << entire << endl;
-
+	rows.push_back(entire);
+	for(int i = 0; i < rows.size(); i++){
+		cout << rows.at(i) << endl;
+	}
 	return in;
 }
 
