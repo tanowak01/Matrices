@@ -5,6 +5,8 @@
 #include "NonSquareMatrixException.h"
 #include "DomainException.h"
 #include <math.h>
+#include <iostream>
+#include <string>
 using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
@@ -236,9 +238,10 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 }
 
 istream& operator>>(istream& in, const Matrix& mat){
-	double val;
-	in >> val;
-	cout << val;
+	string val;
+	while(getline(in, val, ']')){
+		cout << val << endl;
+	}
 	return in;
 }
 
