@@ -253,6 +253,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 		entire = entire.substr(entire.find(lineDelim)+1);
 		cin >> entryDelim;
 	}
+	cout << entire << endl;
 
 	return in;
 }
