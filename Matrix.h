@@ -27,7 +27,8 @@ public:
 	int getRows();
 	int getColumns();
 	Matrix swapRows(int row1, int row2);
-	Matrix transpose();
+	Matrix transpose(); 
+	Matrix eigenValues();
 private:
 	int rows;
 	int columns;

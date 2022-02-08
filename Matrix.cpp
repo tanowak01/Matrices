@@ -351,6 +351,17 @@ Matrix Matrix::transpose(){
 	return Matrix(trans);
 }
 
+double Matrix::trace(){
+	if(rows != columns){
+		throw NonSquareMatrixException();
+	}
+	double sum = 0;
+	for(int i =0; i < rows; i ++){
+		sum += values[i][i];
+	}
+	return sum;
+}
+
 void Matrix::rowOperations(int row1, int row2, double mul){
 		for(int i = 0; i < columns; i ++){
 			values[row2][i] = values[row2][i] - values[row1][i] * mul;
