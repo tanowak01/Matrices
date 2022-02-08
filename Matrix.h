@@ -29,6 +29,7 @@ public:
 	Matrix swapRows(int row1, int row2);
 	Matrix transpose(); 
 	Matrix eigenValues();
+	double trace();
 private:
 	int rows;
 	int columns;
