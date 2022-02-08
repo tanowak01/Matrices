@@ -247,9 +247,11 @@ istream& operator>>(istream& in, const Matrix& mat){
 	entire = entire.substr(1);
 	string entryDelim = ",";
 	string lineDelim = ";";
-	
+	while(entire.find(lineDelim) != string::npos){
+		cout << entire.substr(0,entire.find(lineDelim)) << endl;
+		entire = entire.substr(entire.find(lineDelim));
+	}
 
-	cout << entire << endl;
 	return in;
 }
 
