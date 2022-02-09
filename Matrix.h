@@ -12,6 +12,8 @@
 #include "NonSquareMatrixException.h"
 #include "DomainException.h"
 
+using namespace std;
+
 class Matrix {
 public:
 	Matrix(int row, int col);
