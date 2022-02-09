@@ -14,6 +14,7 @@ void Menu::createNewMatrix(){
         cin >> name;
     }
     Matrix* m1 = new Matrix(0,0);
+    cout << "Enter matrix starting with \'[\', rows separated by \';\', entries separated by \',\', and ending with \']\'" << endl;
     cin >> *m1;
     if(!matMap.insert({name, m1}).second){
         cout << "Insert failed, please try again" << endl;
