@@ -4,8 +4,14 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
-using namespace std;
-//need to implement the determinant
+#include <math.h>
+#include <string>
+#include "InconsistentDimensionsException.h"
+#include "IndexOutOfBoundsException.h"
+#include "SingularMatrixException.h"
+#include "NonSquareMatrixException.h"
+#include "DomainException.h"
+
 class Matrix {
 public:
 	Matrix(int row, int col);

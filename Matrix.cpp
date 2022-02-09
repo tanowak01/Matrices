@@ -1,21 +1,6 @@
 #include "Matrix.h"
-#include "InconsistentDimensionsException.h"
-#include "IndexOutOfBoundsException.h"
-#include "SingularMatrixException.h"
-#include "NonSquareMatrixException.h"
-#include "DomainException.h"
-#include <math.h>
-#include <iostream>
-#include <string>
 
 using namespace std;
-
-int main() {
-	Matrix m(vector<vector<double>>{{1,2,3},{4,5,6},{7,8,9}});
-	cout << m;
-	cout << m.rank();
-	return 0;
-}
 
 Matrix::Matrix(int row, int col)
 {
