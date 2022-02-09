@@ -280,6 +280,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 		cout << rows[i] << endl;
 		values[i] = vector<double>(columns[i]);
 	}
+	try{
 	for(int i = 0; i < rows.size(); i ++){
 		string temp = rows.at(i);
 		int j = 0;
@@ -290,7 +291,11 @@ istream& operator>>(istream& in, const Matrix& mat){
 		}
 		values[i][j] = stod(temp);
 	}
-
+	}
+	catch(std::invalid_argument){
+		cout << "Please make sure that the values are entered correctly\nComma deliminated columns and semi-colon deliminated rows" << endl;
+	}
+	
 	for(int i = 0; i< values.size(); i ++){
 		for(int j = 0; j < values[0].size(); j++){
 			cout << values[i][j] << " ";
