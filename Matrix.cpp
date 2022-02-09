@@ -1,6 +1,12 @@
 #include "Matrix.h"
-
-using namespace std;
+#include "InconsistentDimensionsException.h"
+#include "IndexOutOfBoundsException.h"
+#include "SingularMatrixException.h"
+#include "NonSquareMatrixException.h"
+#include "DomainException.h"
+#include <math.h>
+#include <iostream>
+#include <string>
 
 Matrix::Matrix(int row, int col)
 {
