@@ -254,7 +254,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 	}
 	if(entire != "")
 		rows.push_back(entire);
-	vector<vector<double>> values = vector<vector<double>>(rows.size());
+	vector<int> columns = vector<int>(rows.size());
 	for(int i = 0; i < rows.size(); i++){
 		//cout << rows.at(i) << endl;
 		int counter = 0;
@@ -263,8 +263,23 @@ istream& operator>>(istream& in, const Matrix& mat){
 			counter++;
 			temp = temp.substr(temp.find(entryDelim)+1);
 		}
-		cout << counter << endl;
+		columns.push_back(counter+1);
 	}
+	bool sameSize = true;
+	for(int i = 1; i < columns.size(); i ++){
+		if(columns.at(0) != columns.at(i)){
+			sameSize = false;
+		}
+	}
+	if(!sameSize){
+		throw InconsistentDimensionsException();
+	}
+	vector<vector<double>> values = vector<vector<double>>(rows.size());
+	for(int i = 0; i < values.size(); i ++){
+		cout << rows[i] << endl;
+		values[i] = vector<double>(columns[i]);
+	}
+
 	return in;
 }
 
