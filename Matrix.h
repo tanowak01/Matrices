@@ -13,7 +13,6 @@
 #include "NonSquareMatrixException.h"
 #include "DomainException.h"
 using namespace std;
-//need to implement the determinant
 class Matrix {
 public:
 	Matrix(int row, int col);

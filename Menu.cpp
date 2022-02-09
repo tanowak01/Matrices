@@ -1,18 +1,16 @@
-#include "Matrix.h"
-#include <map>
-
+#include "Menu.h"
 using namespace std;
-
 int main(){
-    map<string, Matrix> matrices;
-    cout << "Welcome to the Calculator App!" << endl;
-    cout << "Please enter in a matrix" << endl;
-    Matrix* m1 = new Matrix(1,1);
-    cin >> *m1;
-    cout << *m1;
-    return 0;
+    Menu menu = Menu();
+    menu.createNewMatrix();
 }
-
-int menuOptions(){
-
+Menu::Menu(){}
+void Menu::createNewMatrix(){
+    cout << "What is the name of this matrix?" << endl;
+    string name;
+    cin >> name;
+    cout << matMap[name];
+    Matrix* m1 = new Matrix(0,0);
+    cin >> *m1;
+    
 }
