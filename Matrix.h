@@ -12,7 +12,7 @@
 #include "SingularMatrixException.h"
 #include "NonSquareMatrixException.h"
 #include "DomainException.h"
-//using namespace std;
+using namespace std;
 //need to implement the determinant
 class Matrix {
 public:

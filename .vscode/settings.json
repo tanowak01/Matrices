@@ -4,6 +4,7 @@
         "iterator": "cpp",
         "memory": "cpp",
         "xstring": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "iostream": "cpp"
     }
 }
