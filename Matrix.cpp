@@ -431,9 +431,17 @@ double Matrix::trace(){
 
 int Matrix::rank(){
 	Matrix temp((*this).rref());
-	cout << "Temp: " << endl;
-	cout << temp;
-	return 0;
+	int rank = 0;
+	for(int i = 0; i < temp.rows; i++){
+		for(int j = 0; j < temp.columns; j++){
+			if(values[i][j] != 0){
+				rank++;
+				break;
+			}
+		}
+	}
+	cout << "Rank: " << rank << endl;
+	return rank;
 }
 
 void Matrix::rowOperations(int row1, int row2, double mul){
