@@ -255,6 +255,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 	if(entire != "")
 		rows.push_back(entire);
 	vector<int> columns = vector<int>();
+////////////////////////////////////////////////
 	for(int i = 0; i < rows.size(); i++){
 		//cout << rows.at(i) << endl;
 		int counter = 0;
@@ -282,8 +283,13 @@ istream& operator>>(istream& in, const Matrix& mat){
 	cout << rows.size() << " rows" << endl;
 	cout << columns.size() << " cols" << endl;
 	for(int i = 0; i < rows.size(); i ++){
-		for(int j = 0; j < columns.size(); j ++){
-
+		string temp = rows.at(i);
+		int j = 0;
+		while(temp.find(entryDelim) != string::npos){
+			cout << "Val: " << temp.substr(0,temp.find(entryDelim)) << endl;
+			values[i][j] = stod(temp.substr(0,temp.find(entryDelim)));
+			temp = temp.substr(temp.find(entryDelim)+1);
+			j++;
 		}
 	}
 
