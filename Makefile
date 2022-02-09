@@ -10,7 +10,7 @@
 #	gcc -o exec_name source_file.c
 #C++:
 build:
-	g++ -o Matrix Matrix.cpp
+	g++ -o Matrix Matrix.cpp Menu.cpp
 #build:
 #	echo ""
 #Run commands to copy
