@@ -227,6 +227,7 @@ istream& operator>>(istream& in, Matrix& mat){
 	getline(in, entire, ']');
 	while(entire.at(0) != '['){
 		cout << "Matrices must start with a \'[\' and end with \']\'" << endl;
+		cout << entire.at(0)<< endl;
 		getline(in, entire, ']');	
 	}
 	entire = entire.substr(1);
