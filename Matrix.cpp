@@ -280,13 +280,10 @@ istream& operator>>(istream& in, const Matrix& mat){
 		cout << rows[i] << endl;
 		values[i] = vector<double>(columns[i]);
 	}
-	cout << rows.size() << " rows" << endl;
-	cout << columns.size() << " cols" << endl;
 	for(int i = 0; i < rows.size(); i ++){
 		string temp = rows.at(i);
 		int j = 0;
 		while(temp.find(entryDelim) != string::npos){
-			cout << "Val: " << temp.substr(0,temp.find(entryDelim)) << endl;
 			values[i][j] = stod(temp.substr(0,temp.find(entryDelim)));
 			temp = temp.substr(temp.find(entryDelim)+1);
 			j++;
@@ -294,6 +291,12 @@ istream& operator>>(istream& in, const Matrix& mat){
 		values[i][j] = stod(temp);
 	}
 
+	for(int i = 0; i< values.size(); i ++){
+		for(int j = 0; j < values[0].size(); j++){
+			cout << values[i][j] << " ";
+		}
+		cout << endl;
+	}
 	return in;
 }
 
