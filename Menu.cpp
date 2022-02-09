@@ -12,5 +12,5 @@ void Menu::createNewMatrix(){
     Matrix* m1 = new Matrix(0,0);
     cin >> *m1;
     cout << matMap.insert({name, m1}).second;
-    
+    cout << matMap.insert({name, m1}).second;
 }
