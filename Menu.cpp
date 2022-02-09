@@ -9,8 +9,8 @@ void Menu::createNewMatrix(){
     cout << "What is the name of this matrix?" << endl;
     string name;
     cin >> name;
-    cout << matMap[name];
     Matrix* m1 = new Matrix(0,0);
     cin >> *m1;
+    cout << matMap.insert({name, m1}).second;
     
 }
