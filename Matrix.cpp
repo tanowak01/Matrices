@@ -292,7 +292,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 		values[i][j] = stod(temp);
 	}
 	}
-	catch(std::invalid_argument){
+	catch(const std::invalid_argument& oor){
 		cout << "Please make sure that the values are entered correctly\nComma deliminated columns and semi-colon deliminated rows" << endl;
 	}
 	
