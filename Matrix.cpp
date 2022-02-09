@@ -224,7 +224,11 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 istream& operator>>(istream& in, Matrix& mat){
 	string entire;
 	vector<string> rows;
+	in.clear();
 	getline(in, entire, ']');
+	while(entire.at(0) == '\n' || entire.at(0) == ' '){
+		entire = entire.substr(1);
+	}
 	while(entire.at(0) != '['){
 		cout << "Matrices must start with a \'[\' and end with \']\'" << endl;
 		cout << entire<< endl;
