@@ -257,12 +257,11 @@ istream& operator>>(istream& in, const Matrix& mat){
 	vector<vector<double>> values = vector<vector<double>>(rows.size());
 	for(int i = 0; i < rows.size(); i++){
 		//cout << rows.at(i) << endl;
-		int mostRecent;
 		int counter = 0;
-		while(rows.at(i).substr(mostRecent+1).find(entryDelim) != string::npos){
-			cout << "Substring: " << rows.at(i).substr(mostRecent+1) << endl;
+		string temp = rows.at(i);
+		while(temp.find(entryDelim) != string::npos){
 			counter++;
-			mostRecent = rows.at(i).substr(mostRecent+1).find(entryDelim);
+			temp = temp.substr(temp.find(entryDelim)+1);
 		}
 		cout << counter << endl;
 	}
