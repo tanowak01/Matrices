@@ -291,6 +291,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 			temp = temp.substr(temp.find(entryDelim)+1);
 			j++;
 		}
+		values[i][j] = stod(temp);
 	}
 
 	return in;
