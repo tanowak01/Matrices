@@ -9,7 +9,7 @@ void Menu::createNewMatrix(){
     cout << "What is the name of this matrix?" << endl;
     string name;
     cin >> name;
-    while(matMap.find(name) == matMap.end()){
+    while(matMap.find(name) != matMap.end()){
         cout << "That name is being used, choose another: " << endl;
         cin >> name;
     }
