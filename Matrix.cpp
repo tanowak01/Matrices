@@ -11,6 +11,7 @@ using namespace std;
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
 	cin >> m;
+	cout << m;
 	//cout << m;
 	//cout << m.trace();
 	return 0;
@@ -237,7 +238,7 @@ ostream& operator<<(ostream& out, const Matrix& mat)
 	return out;
 }
 
-istream& operator>>(istream& in, const Matrix& mat){
+istream& operator>>(istream& in, Matrix& mat){
 	string entire;
 	vector<string> rows;
 	getline(in, entire, ']');
@@ -294,6 +295,9 @@ istream& operator>>(istream& in, const Matrix& mat){
 	catch(const std::invalid_argument& oor){
 		cout << "Please make sure that the values are entered correctly\nComma deliminated columns and semi-colon deliminated rows" << endl;
 	}
+	mat.columns = columns[0];
+	mat.rows = rows.size();
+	mat.values = values;
 	return in;
 }
 

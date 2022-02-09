@@ -20,7 +20,7 @@ public:
 	friend Matrix operator *(Matrix& mat, double val);
 	friend Matrix operator ^(Matrix& mat, double power);
 	friend ostream& operator<<(ostream& out, const Matrix& mat);
-	friend istream& operator>>(istream& in, const Matrix& mat);
+	friend istream& operator>>(istream& in, Matrix& mat);
 	double operator ()(int row, int col);
 	Matrix operator ()(int row, int col, double val);
 	Matrix rref();
