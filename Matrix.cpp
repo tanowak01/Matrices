@@ -254,7 +254,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 	}
 	if(entire != "")
 		rows.push_back(entire);
-	vector<int> columns = vector<int>(rows.size());
+	vector<int> columns = vector<int>();
 	for(int i = 0; i < rows.size(); i++){
 		//cout << rows.at(i) << endl;
 		int counter = 0;
