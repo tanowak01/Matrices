@@ -4,15 +4,15 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <math.h>
+#include <iostream>
+#include <string>
 #include "InconsistentDimensionsException.h"
 #include "IndexOutOfBoundsException.h"
 #include "SingularMatrixException.h"
 #include "NonSquareMatrixException.h"
 #include "DomainException.h"
-#include <math.h>
-#include <iostream>
-#include <string>
-using namespace std;
+//using namespace std;
 //need to implement the determinant
 class Matrix {
 public:

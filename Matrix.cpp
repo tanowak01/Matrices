@@ -1,5 +1,7 @@
 #include "Matrix.h"
 
+using namespace std;
+
 Matrix::Matrix(int row, int col)
 {
 	//cout << "ROWCOL" << endl;
