@@ -267,6 +267,7 @@ istream& operator>>(istream& in, const Matrix& mat){
 	}
 	bool sameSize = true;
 	for(int i = 1; i < columns.size(); i ++){
+		cout << "Col: " << columns[i] << endl;
 		if(columns.at(0) != columns.at(i)){
 			sameSize = false;
 		}
