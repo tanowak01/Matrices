@@ -31,6 +31,7 @@ public:
 	Matrix transpose(); 
 	Matrix eigenValues();
 	double trace();
+	int rank();
 private:
 	int rows;
 	int columns;

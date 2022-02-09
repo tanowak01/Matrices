@@ -7,13 +7,13 @@
 #include <math.h>
 #include <iostream>
 #include <string>
+
 using namespace std;
+
 int main() {
 	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
-	cin >> m;
 	cout << m;
-	//cout << m;
-	//cout << m.trace();
+	cout << m.rank();
 	return 0;
 }
 
@@ -427,6 +427,13 @@ double Matrix::trace(){
 		sum += values[i][i];
 	}
 	return sum;
+}
+
+int Matrix::rank(){
+	Matrix temp((*this).rref());
+	cout << "Temp: " << endl;
+	cout << temp;
+	return 0;
 }
 
 void Matrix::rowOperations(int row1, int row2, double mul){
