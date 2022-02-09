@@ -11,7 +11,7 @@
 using namespace std;
 
 int main() {
-	Matrix m(vector<vector<double>>{{1,2,3, 6},{5,6,70, 1},{9,8,11, 0},{1,2,3, 1}});
+	Matrix m(vector<vector<double>>{{1,2,3},{4,5,6},{7,8,9}});
 	cout << m;
 	cout << m.rank();
 	return 0;
@@ -434,13 +434,13 @@ int Matrix::rank(){
 	int rank = 0;
 	for(int i = 0; i < temp.rows; i++){
 		for(int j = 0; j < temp.columns; j++){
-			if(values[i][j] != 0){
+			if(values[i][j] == 1){
 				rank++;
 				break;
 			}
 		}
 	}
-	cout << "Rank: " << rank << endl;
+	//cout << "Rank: " << rank << endl;
 	return rank;
 }
 
